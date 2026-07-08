@@ -1,0 +1,17 @@
+{
+  "_id": "001",
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "hashed_password",
+  "created_at": "2024-01-15T10:00:00Z",
+  "shopping_cart": [
+    {
+      "product_id": "001",
+      "quantity": "2"
+    },
+    {
+      "product_id": "002",
+      "quantity": "1"
+    }
+  ]
+}
