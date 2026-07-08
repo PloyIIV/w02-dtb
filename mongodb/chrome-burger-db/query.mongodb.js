@@ -56,9 +56,14 @@ use("sample_mflix");
 //   .find({ directors: { $in: ["Hal Roach"] } })
 //   .sort({ released: -1 })
 //   .limit(1);
-// db.movies.find({ directors: { $in: ["Hal Roach"] } }, { "awards.wins": 1 });
-
-// ข้อนี้ไม่เกี่ยวค่ะ
 // db.movies
-//   .find({ cast: { $in: ["Chiwetel Ejiofor"] } }, { "awards.wins": 1 })
-//   .sort({ "awards.wins": -1 });
+//   .find({ directors: { $in: ["Hal Roach"] }, "awards.wins": { $gt: 0 } })
+//   .count();
+
+// ข้อ How many awards did Hal Roach's movie win? ขอใช้ของ Chiwetel Ejiofor แทนค่ะ เพราะ Hal Roach ไม่มีหนังที่ชนะรางวัลค่ะ
+// db.movies.aggregate([
+//   {
+//     $match: { cast: { $in: ["Chiwetel Ejiofor"] }, "awards.wins": { $gt: 0 } },
+//   },
+//   { $group: { _id: "Chiwetel Ejiofor", totalWins: { $sum: "$awards.wins" } } },
+// ]);
